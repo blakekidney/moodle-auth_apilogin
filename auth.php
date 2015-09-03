@@ -60,7 +60,8 @@ class auth_plugin_apilogin extends auth_plugin_base {
 		//of if not set, then allow moodle to perform the redirect
 		} else {	
 			if($this->config->loginredirect) {
-				redirect($this->config->loginredirect);
+				$q = ((strpos($this->config->loginredirect, '?') === false) ? '?' : '&').'invalid=1';
+				redirect($this->config->loginredirect.$q);
 			}		
 		}
 		
@@ -101,7 +102,8 @@ class auth_plugin_apilogin extends auth_plugin_base {
 			//of if not set, then allow moodle to perform the redirect
 			} else {	
 				if($this->config->loginredirect) {
-					redirect($this->config->loginredirect);
+					$q = ((strpos($this->config->loginredirect, '?') === false) ? '?' : '&').'invalid=1';
+					redirect($this->config->loginredirect.$q);
 				}		
 			}
 		}
